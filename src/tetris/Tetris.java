@@ -25,20 +25,9 @@ public class Tetris extends JFrame {
         add(score, BorderLayout.SOUTH);
         add(statusbar, BorderLayout.SOUTH);
         Board board = new Board(this);
-        JOptionPane.showMessageDialog(board,
-        		"Welcome to Tetris \n "
-        		+ "Created by Prachi\n\n"
-        		+ "Instructions for the game\n"
-        		+ " You have to eliminate rows of blocks by fitting them in the empty spaces\n"
-        		+ " Keys : \n"
-        		+ " Navigation:\n"
-        		+ " 1. Left : LEFT\n"
-        		+ " 2. Right: RIGHT\n"
-        		+ " Rotation\n"
-        		+ " 1. Left : UP\n"
-        		+ " 2. Right:DOWN\n"
-        		+ " Drop down :SPACE\n"
-        		+ " Pause     :Press <P>");
+        
+        //remove instructions
+        
         add(board);
         board.start();
 
