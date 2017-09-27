@@ -42,30 +42,15 @@ public class Tetris extends JFrame {
         add(board);
         board.start();
 
-        setSize(200, 400);
+        setSize(400, 700);
         setTitle("Tetris");
-        addWindowListener(new WindowAdapter() {
-        	  public void windowClosing(WindowEvent e) {
-        	    int confirmed = JOptionPane.showConfirmDialog(null, 
-        	        "Are you sure you want to exit the program?", "Exit Program Message Box",
-        	        JOptionPane.YES_NO_OPTION);
+        
+        //eliminate window listener
 
-        	    if (confirmed == JOptionPane.YES_OPTION) {
-        	      dispose();
-        	    }
-        	  }
-        	});
    }
 
    public JLabel getStatusBar() {
        return statusbar;
    }
 
-    public static void main(String[] args) {
-
-        Tetris game = new Tetris();
-        game.setLocationRelativeTo(null);
-        game.setVisible(true);
-
-    } 
 }
