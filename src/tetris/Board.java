@@ -26,8 +26,6 @@ public class Board extends JPanel implements ActionListener {
 
     Timer timer;
     boolean isFallingFinished = false;
-    boolean isStarted = false;
-    boolean isPaused = false;
     int numLinesRemoved = 0;
     int curX = 0;
     int curY = 0;
@@ -138,7 +136,6 @@ public class Board extends JPanel implements ActionListener {
         if (!tryMove(curPiece, curX, curY)) {
             curPiece.setShape(Tetrominoes.NoShape);
             timer.stop();
-            isStarted = false;
             statusbar.setText("game over");
         }
     }
@@ -222,14 +219,11 @@ public class Board extends JPanel implements ActionListener {
     class TAdapter extends KeyAdapter {
          public void keyPressed(KeyEvent e) {
 
-             if (!isStarted || curPiece.getShape() == Tetrominoes.NoShape) {  
+             if (curPiece.getShape() == Tetrominoes.NoShape) {  
                  return;
              }
 
              int keycode = e.getKeyCode();
-
-             if (isPaused)
-                 return;
 
              switch (keycode) {
              case KeyEvent.VK_LEFT:
