@@ -44,7 +44,6 @@ public class Board extends JPanel implements ActionListener {
        timer = new Timer(400, this);
        timer.start(); 
 
-       statusbar =  parent.getStatusBar();
        board = new Tetrominoes[BoardWidth * BoardHeight];
        addKeyListener(new TAdapter());
        clearBoard();  
@@ -63,37 +62,6 @@ public class Board extends JPanel implements ActionListener {
     int squareWidth() { return (int) getSize().getWidth() / BoardWidth; }
     int squareHeight() { return (int) getSize().getHeight() / BoardHeight; }
     Tetrominoes shapeAt(int x, int y) { return board[(y * BoardWidth) + x]; }
-
-
-    public void start()
-    {
-        if (isPaused)
-            return;
-
-        isStarted = true;
-        isFallingFinished = false;
-        numLinesRemoved = 0;
-        clearBoard();
-
-        newPiece();
-        timer.start();
-    }
-
-    private void pause()
-    {
-        if (!isStarted)
-            return;
-
-        isPaused = !isPaused;
-        if (isPaused) {
-            timer.stop();
-            statusbar.setText("paused");
-        } else {
-            timer.start();
-            statusbar.setText("Score"+String.valueOf(numLinesRemoved));
-        }
-        repaint();
-    }
 
     public void paint(Graphics g)
     { 
@@ -259,11 +227,6 @@ public class Board extends JPanel implements ActionListener {
              }
 
              int keycode = e.getKeyCode();
-
-             if (keycode == 'p' || keycode == 'P') {
-                 pause();
-                 return;
-             }
 
              if (isPaused)
                  return;
